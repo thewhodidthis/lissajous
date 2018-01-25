@@ -16,7 +16,7 @@ const driver = (a = 1, b = a, phase = Math.PI * 0.5, A = 1, B = A) => {
     const x = swing(A, a, phase * 2)
     const y = swing(B, b, phase)
 
-    return (t) => ({ x: x(t), y: y(t) })
+    return t => ({ x: x(t), y: y(t) })
 }
 
 // Points for Lemniscate of Gerono
