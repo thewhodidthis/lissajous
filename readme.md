@@ -12,7 +12,7 @@ import swing from '@thewhodidthis/swing'
 
 // Lissajous curve wrapper (no damping)
 const driver = (a = 1, b = a, phase = Math.PI * 0.5, A = 1, B = A) => {
-    // Shift both ends by half PI
+    // Shift both ends half a PI
     const x = swing(A, a, phase * 2)
     const y = swing(B, b, phase)
 
