@@ -26,53 +26,75 @@ var swing = function (A, f, p, d) {
 ;
 }  };
 
-// Lissajous
-var lookup = function (t, a, b, delta, A, B) {
-  if ( t === void 0 ) t = 0;
-  if ( a === void 0 ) a = 1;
-  if ( b === void 0 ) b = a;
-  if ( delta === void 0 ) delta = Math.PI * t;
-  if ( A === void 0 ) A = 1;
-  if ( B === void 0 ) B = A;
-
-  return ({
-  x: swing(A, a, delta)(t),
-  y: swing(B, b)(t)
-});
-};
-
-/* eslint no-unused-vars: 1 */
 var canvas = document.querySelector('canvas');
 var target = canvas.getContext('2d');
 
-target.fillStyle = '#888';
+target.lineCap = 'round';
 
-var turn = Math.PI * 2;
-var step = { x: canvas.width / 4, y: canvas.height / 3 };
+var step = { x: canvas.width / 3, y: canvas.height / 2 };
 var cell = { x: step.x * 0.5, y: step.y * 0.5 };
 var size = cell.y * 0.75;
 
-var grid = function (v, i) { return ({ x: i % 4, y: Math.floor(i / 4) }); };
+var colors = [
+  'rgba(255, 0, 0, 0.2)',
+  'rgba(255, 255, 0, 0.2)',
+  'rgba(255, 0, 255, 0.2)',
+  'rgba(255, 255, 255, 0.2)',
+  'rgba(0, 255, 255, 0.2)',
+  'rgba(0, 0, 255, 0.2)'
+];
 
-Array.from({ length: 4 * 3 }).map(grid).forEach(function (v, i) {
+var driver = function (A, a, b, phase, B) {
+  if ( A === void 0 ) A = 1;
+  if ( a === void 0 ) a = 1;
+  if ( b === void 0 ) b = a;
+  if ( phase === void 0 ) phase = Math.PI;
+  if ( B === void 0 ) B = A;
+
+  var x = swing(A, a, phase);
+  var y = swing(B, b);
+
+  return function (t) { return ({ x: x(t), y: y(t) }); }
+};
+
+var render = function (wave, t) {
+  if ( t === void 0 ) t = 0;
+
+  if (t < 1) {
+    return false
+  }
+
+  var p = wave(t * 0.006);
+
+  target.beginPath();
+  target.moveTo(p.x, p.y);
+  target.lineTo(0, 0);
+  target.stroke();
+
+  return render(wave, t - 1)
+};
+
+var grid = function (v, i) { return ({ x: i % 3, y: Math.floor(i / 3) }); };
+
+Array.from({ length: 3 * 2 }).map(grid).forEach(function (v, i) {
   var x = (v.x * step.x) + cell.x;
   var y = (v.y * step.y) + cell.y;
 
-  var a = 5 + (2 * (v.y - 2));
-  var k = 1 + v.x;
-  var b = k === a ? 5 : k;
-  var n = i === a ? 180 : 400;
+  // Odd numbers repeated, A109613
+  var k = 2 * Math.floor(i * 0.5);
+  var a = k + 1;
+
+  // Flip on each turn
+  var b = i % 2 ? 2 : 4;
+
+  var lookup = driver(size, a, b);
+
+  target.strokeStyle = colors[i];
 
   target.save();
   target.translate(x, y);
 
-  var points = Array.from({ length: n }).map(function (_, j) { return lookup(j, a, b); });
-
-  points.forEach(function (p) {
-    target.beginPath();
-    target.arc(p.x * size, p.y * size, 1, 0, turn);
-    target.fill();
-  });
+  render(lookup, 525);
 
   target.restore();
 });
