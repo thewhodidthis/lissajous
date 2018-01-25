@@ -7,7 +7,7 @@ npm i thewhodidthis/swing
 ```
 
 ### Usage
-```sh
+```js
 import swing from '@thewhodidthis/swing'
 
 // Lissajous curve wrapper (no damping)
