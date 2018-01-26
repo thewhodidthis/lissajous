@@ -1,5 +1,5 @@
 /**
- * Helps produce damped harmonic motion
+ * Damped harmonic oscillator
  * @module swing
  * @param {Number} A - Amplitude
  * @param {Number} f - Frequency

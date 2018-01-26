@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Helps trace out damped harmonic oscillations
+ * Damped harmonic oscillator
  * @module swing
  * @param {Number} A - Amplitude
  * @param {Number} f - Frequency
