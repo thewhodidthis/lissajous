@@ -35,14 +35,12 @@ var step = { x: canvas.width / 3, y: canvas.height / 2 };
 var cell = { x: step.x * 0.5, y: step.y * 0.5 };
 var size = cell.y * 0.75;
 
-var colors = [
-  'rgba(255, 0, 0, 0.2)',
-  'rgba(255, 255, 0, 0.2)',
-  'rgba(255, 0, 255, 0.2)',
-  'rgba(255, 255, 255, 0.2)',
-  'rgba(0, 255, 255, 0.2)',
-  'rgba(0, 0, 255, 0.2)'
-];
+var colors = 'ff0000 ffff00 ff00ff ffffff 00ffff 0000ff'.split(' ').map(function (v) {
+  var hex = parseInt(v, 16);
+  var rgb = [hex >> 16, hex >> 8, hex].map(function (c) { return c & 255; }).join(',');
+
+  return ("rgba(" + rgb + ", 0.2)")
+});
 
 var driver = function (A, a, b, phase, B) {
   if ( A === void 0 ) A = 1;
