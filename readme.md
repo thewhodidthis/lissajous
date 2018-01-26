@@ -1,4 +1,4 @@
-> Helps create harmonograph inspired patterns
+> Helps create harmonograph style patterns
 
 ### Setup
 ```sh
