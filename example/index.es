@@ -4,17 +4,11 @@ const canvas = document.querySelector('canvas')
 const target = canvas.getContext('2d')
 
 target.lineCap = 'round'
+target.strokeStyle = 'rgba(0, 0, 0, 0.1)'
 
 const step = { x: canvas.width / 3, y: canvas.height / 2 }
 const cell = { x: step.x * 0.5, y: step.y * 0.5 }
 const size = cell.y * 0.75
-
-const colors = 'ff0000 ffff00 ff00ff ffffff 00ffff 0000ff'.split(' ').map((v) => {
-  const hex = parseInt(v, 16)
-  const rgb = [hex >> 16, hex >> 8, hex].map(c => c & 255).join(',')
-
-  return `rgba(${rgb}, 0.15)`
-})
 
 const driver = (A = 1, a = 1, b = a, phase = Math.PI, B = A) => {
   const x = swing(A, a, phase)
@@ -52,8 +46,6 @@ Array.from({ length: 3 * 2 }).map(grid).forEach((v, i) => {
   const b = i % 2 ? 2 : 4
 
   const lookup = driver(size, a, b)
-
-  target.strokeStyle = colors[i]
 
   target.save()
   target.translate(x, y)

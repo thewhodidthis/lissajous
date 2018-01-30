@@ -30,17 +30,11 @@ var canvas = document.querySelector('canvas');
 var target = canvas.getContext('2d');
 
 target.lineCap = 'round';
+target.strokeStyle = 'rgba(0, 0, 0, 0.1)';
 
 var step = { x: canvas.width / 3, y: canvas.height / 2 };
 var cell = { x: step.x * 0.5, y: step.y * 0.5 };
 var size = cell.y * 0.75;
-
-var colors = 'ff0000 ffff00 ff00ff ffffff 00ffff 0000ff'.split(' ').map(function (v) {
-  var hex = parseInt(v, 16);
-  var rgb = [hex >> 16, hex >> 8, hex].map(function (c) { return c & 255; }).join(',');
-
-  return ("rgba(" + rgb + ", 0.15)")
-});
 
 var driver = function (A, a, b, phase, B) {
   if ( A === void 0 ) A = 1;
@@ -86,8 +80,6 @@ Array.from({ length: 3 * 2 }).map(grid).forEach(function (v, i) {
   var b = i % 2 ? 2 : 4;
 
   var lookup = driver(size, a, b);
-
-  target.strokeStyle = colors[i];
 
   target.save();
   target.translate(x, y);
