@@ -13,7 +13,7 @@ const colors = 'ff0000 ffff00 ff00ff ffffff 00ffff 0000ff'.split(' ').map((v) =>
   const hex = parseInt(v, 16)
   const rgb = [hex >> 16, hex >> 8, hex].map(c => c & 255).join(',')
 
-  return `rgba(${rgb}, 0.2)`
+  return `rgba(${rgb}, 0.15)`
 })
 
 const driver = (A = 1, a = 1, b = a, phase = Math.PI, B = A) => {

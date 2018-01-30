@@ -39,7 +39,7 @@ var colors = 'ff0000 ffff00 ff00ff ffffff 00ffff 0000ff'.split(' ').map(function
   var hex = parseInt(v, 16);
   var rgb = [hex >> 16, hex >> 8, hex].map(function (c) { return c & 255; }).join(',');
 
-  return ("rgba(" + rgb + ", 0.2)")
+  return ("rgba(" + rgb + ", 0.15)")
 });
 
 var driver = function (A, a, b, phase, B) {
