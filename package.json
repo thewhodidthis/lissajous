@@ -1,6 +1,6 @@
 {
   "name": "@thewhodidthis/swing",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Damped pendulum",
   "main": "index",
   "module": "index.mjs",
