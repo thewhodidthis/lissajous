@@ -1,7 +1,7 @@
 {
   "name": "@thewhodidthis/swing",
   "version": "0.0.1",
-  "description": "Damped harmonic oscillator",
+  "description": "Damped pendulum",
   "main": "index",
   "module": "index.mjs",
   "homepage": "https://github.com/thewhodidthis/swing#readme",
