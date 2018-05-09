@@ -1,5 +1,5 @@
 /**
- * Damped harmonic oscillator
+ * Damped pendulum
  * @module swing
  * @param {Number} A - Amplitude
  * @param {Number} f - Frequency
