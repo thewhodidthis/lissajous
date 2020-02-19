@@ -5,4 +5,6 @@ const swing = require('./')
 
 const x = swing()()
 
-equal(x, 0, 'will default')
+equal
+  .describe(null, 'will default')
+  .test(x, 0)
