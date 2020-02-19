@@ -13,7 +13,7 @@
    * @example
    * swing(10, 10)();
    */
-  var swing = (A = 0, f = 1, p = 0, d = 0) => (t = 0) => A * Math.cos((t * f) + p) * Math.exp(-d * t)
+  const config = (A = 0, f = 1, p = 0, d = 0) => (t = 0) => A * Math.cos((t * f) + p) * Math.exp(-d * t);
 
   const canvas = document.querySelector('canvas');
   const target = canvas.getContext('2d');
@@ -26,8 +26,8 @@
   const size = cell.y * 0.75;
 
   const driver = (A = 1, a = 1, b = a, phase = Math.PI, B = A) => {
-    const x = swing(A, a, phase);
-    const y = swing(B, b);
+    const x = config(A, a, phase);
+    const y = config(B, b);
 
     return t => ({ x: x(t), y: y(t) })
   };
