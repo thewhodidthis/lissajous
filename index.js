@@ -12,6 +12,6 @@
  * @example
  * swing(10, 10)();
  */
-var index = (A = 0, f = 1, p = 0, d = 0) => (t = 0) => A * Math.cos((t * f) + p) * Math.exp(-d * t)
+const index = (A = 0, f = 1, p = 0, d = 0) => (t = 0) => A * Math.cos((t * f) + p) * Math.exp(-d * t);
 
 module.exports = index;
