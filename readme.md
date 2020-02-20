@@ -24,7 +24,7 @@ const lookup = driver(175, 100)
 setInterval(() => {
   const t = Date.now()
   const { x, y } = lookup(t)
-      
+
   console.log(x, y)
 }, 1000)
 ```
