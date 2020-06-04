@@ -1,12 +1,19 @@
-> Helps create harmonograph style patterns
+## about
 
-### Setup
+Helps create harmonograph style patterns.
+
+## Setup
+
+Fetch latest from GitHub directly:
+
 ```sh
-# Fetch latest from github
 npm i thewhodidthis/swing
 ```
 
-### Usage
+## usage
+
+Pass in at a minimum amplitude and frequency arguments and call the resulting function over time. For example,
+
 ```js
 import swing from '@thewhodidthis/swing'
 
@@ -28,3 +35,7 @@ setInterval(() => {
   console.log(x, y)
 }, 1000)
 ```
+
+## see also
+
+- [Harmonography](https://thewhodidthis.com/harmonography/)
