@@ -2,7 +2,7 @@
 
 Helps create harmonograph style patterns.
 
-## Setup
+## setup
 
 Fetch latest from GitHub directly:
 
