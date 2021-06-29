@@ -1,10 +1,12 @@
-'use strict'
+import { assert, report } from "tapeless"
+import swing from "./main.js"
 
-const { equal } = require('tapeless')
-const swing = require('./')
+const { equal } = assert
 
 const x = swing()()
 
 equal
-  .describe(null, 'will default')
+  .describe(null, "will default")
   .test(x, 0)
+
+report()
