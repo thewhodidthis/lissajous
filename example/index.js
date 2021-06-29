@@ -1,10 +1,10 @@
-import swing from '../index.mjs'
+import swing from "../main.js"
 
-const canvas = document.querySelector('canvas')
-const target = canvas.getContext('2d')
+const canvas = document.querySelector("canvas")
+const target = canvas.getContext("2d")
 
-target.lineCap = 'round'
-target.strokeStyle = 'rgba(0, 0, 0, 0.1)'
+target.lineCap = "round"
+target.strokeStyle = "rgba(0, 0, 0, 0.1)"
 
 const step = { x: canvas.width / 3, y: canvas.height / 2 }
 const cell = { x: step.x * 0.5, y: step.y * 0.5 }
@@ -32,7 +32,7 @@ const render = (wave, t = 0) => {
   return render(wave, t - 1)
 }
 
-const grid = (v, i) => ({ x: i % 3, y: Math.floor(i / 3) })
+const grid = (_, i) => ({ x: i % 3, y: Math.floor(i / 3) })
 
 Array.from({ length: 3 * 2 }).map(grid).forEach((v, i) => {
   const x = (v.x * step.x) + cell.x
